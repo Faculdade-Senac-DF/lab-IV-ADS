@@ -1,0 +1,29 @@
+{
+  "name": "lab-iv-ads",
+  "version": "1.0.0",
+  "description": "Projeto Final – Gerenciador de Tarefas | Laboratório de Inovação IV – ADS SENAC-DF",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "jest --testPathPatterns=tests/"
+  },
+  "keywords": [
+    "tarefas",
+    "node",
+    "express",
+    "sqlite",
+    "ads",
+    "senac"
+  ],
+  "author": "ADS SENAC-DF",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^12.9.0",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.5.0"
+  },
+  "devDependencies": {
+    "jest": "^30.3.0",
+    "supertest": "^7.2.2"
+  }
+}
