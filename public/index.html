@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gerenciador de Tarefas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <h1>📋 Gerenciador de Tarefas</h1>
+      <p class="subtitle">Laboratório de Inovação IV – ADS | SENAC-DF</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Statistics bar -->
+    <section class="stats" id="stats">
+      <div class="stat-card">
+        <span class="stat-number" id="stat-total">0</span>
+        <span class="stat-label">Total</span>
+      </div>
+      <div class="stat-card pendente">
+        <span class="stat-number" id="stat-pendente">0</span>
+        <span class="stat-label">Pendentes</span>
+      </div>
+      <div class="stat-card em_andamento">
+        <span class="stat-number" id="stat-andamento">0</span>
+        <span class="stat-label">Em Andamento</span>
+      </div>
+      <div class="stat-card concluida">
+        <span class="stat-number" id="stat-concluida">0</span>
+        <span class="stat-label">Concluídas</span>
+      </div>
+    </section>
+
+    <!-- Add/Edit Task Form -->
+    <section class="card form-section">
+      <h2 id="form-title">Nova Tarefa</h2>
+      <form id="task-form">
+        <input type="hidden" id="task-id" />
+        <div class="form-row">
+          <div class="form-group">
+            <label for="task-title">Título *</label>
+            <input type="text" id="task-title" placeholder="Ex: Estudar Node.js" required maxlength="120" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="task-description">Descrição</label>
+            <textarea id="task-description" placeholder="Detalhes sobre a tarefa..." rows="3" maxlength="500"></textarea>
+          </div>
+        </div>
+        <div class="form-row two-cols">
+          <div class="form-group">
+            <label for="task-status">Status</label>
+            <select id="task-status">
+              <option value="pendente">Pendente</option>
+              <option value="em_andamento">Em Andamento</option>
+              <option value="concluida">Concluída</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="task-priority">Prioridade</label>
+            <select id="task-priority">
+              <option value="baixa">Baixa</option>
+              <option value="media" selected>Média</option>
+              <option value="alta">Alta</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary" id="submit-btn">Adicionar Tarefa</button>
+          <button type="button" class="btn btn-secondary" id="cancel-btn" style="display:none">Cancelar</button>
+        </div>
+        <p class="form-error" id="form-error"></p>
+      </form>
+    </section>
+
+    <!-- Filters -->
+    <section class="filters">
+      <div class="filter-group">
+        <label>Filtrar por Status:</label>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter-status="">Todos</button>
+          <button class="filter-btn" data-filter-status="pendente">Pendente</button>
+          <button class="filter-btn" data-filter-status="em_andamento">Em Andamento</button>
+          <button class="filter-btn" data-filter-status="concluida">Concluída</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <label>Filtrar por Prioridade:</label>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter-priority="">Todas</button>
+          <button class="filter-btn" data-filter-priority="alta">Alta</button>
+          <button class="filter-btn" data-filter-priority="media">Média</button>
+          <button class="filter-btn" data-filter-priority="baixa">Baixa</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Task List -->
+    <section class="task-list-section">
+      <div id="loading" class="loading">Carregando tarefas...</div>
+      <ul id="task-list" class="task-list"></ul>
+      <p id="empty-message" class="empty-message" style="display:none">Nenhuma tarefa encontrada.</p>
+    </section>
+  </main>
+
+  <!-- Delete Confirmation Modal -->
+  <div id="modal-overlay" class="modal-overlay" style="display:none">
+    <div class="modal">
+      <h3>Confirmar Exclusão</h3>
+      <p>Tem certeza que deseja excluir esta tarefa? Esta ação não pode ser desfeita.</p>
+      <div class="modal-actions">
+        <button class="btn btn-danger" id="confirm-delete-btn">Excluir</button>
+        <button class="btn btn-secondary" id="cancel-delete-btn">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Projeto Final – Laboratório de Inovação IV | ADS SENAC-DF © 2025</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
